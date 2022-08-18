@@ -65,7 +65,7 @@ def menu():
     mainmenu.items.append(update)
     mainmenu.items.append(delete)
 
-    return menu
+    return mainmenu
 
 
 def create_comment():
