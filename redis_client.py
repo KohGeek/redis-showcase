@@ -5,6 +5,7 @@ Showcase of Redis with Python client, as requested by UECS3203 Advanced Database
 The showcase targets a simple comment box system with username and timestamp.
 """
 import datetime
+import os
 from typing import Optional
 
 from cursesmenu import CursesMenu
@@ -27,6 +28,11 @@ class Comments(HashModel):
     body: str
     name: Optional[str] = "Anonymous"
     datetime: datetime.datetime
+
+
+def cls():
+    """Clears the screen."""
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def is_number(text):
@@ -106,6 +112,7 @@ def retrieve_comment(wait=True):
 
 def update_comment():
     """Updates a comment."""
+    cls()
     comment = get_comment("Select a comment to update: ")
 
     if comment is not None:
@@ -120,6 +127,7 @@ def update_comment():
 
 def delete_comment():
     """Deletes a comment."""
+    cls()
     comment = get_comment("Select a comment to delete: ")
 
     if comment is not None:
