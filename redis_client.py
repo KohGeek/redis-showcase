@@ -30,11 +30,6 @@ class Comments(HashModel):
     datetime: datetime.datetime
 
 
-def cls():
-    """Clears the screen."""
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
 def is_number(text):
     """Returns True if text is a number."""
     return text.isdigit()
@@ -93,7 +88,7 @@ def create_comment():
 
 def retrieve_comment(wait=True):
     """Retrieves all comments."""
-    cls()
+    os.system('cls' if os.name == 'nt' else 'clear')
     comments = Comments.find().all()
     if comments:
         for i, comment in enumerate(comments):
@@ -113,7 +108,6 @@ def retrieve_comment(wait=True):
 
 def update_comment():
     """Updates a comment."""
-    cls()
     comment = get_comment("Select a comment to update: ")
 
     if comment is not None:
@@ -128,7 +122,6 @@ def update_comment():
 
 def delete_comment():
     """Deletes a comment."""
-    cls()
     comment = get_comment("Select a comment to delete: ")
 
     if comment is not None:
