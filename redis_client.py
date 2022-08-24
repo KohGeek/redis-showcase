@@ -93,6 +93,7 @@ def create_comment():
 
 def retrieve_comment(wait=True):
     """Retrieves all comments."""
+    cls()
     comments = Comments.find().all()
     if comments:
         for i, comment in enumerate(comments):
