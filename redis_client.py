@@ -35,6 +35,11 @@ def is_number(text):
     return text.isdigit()
 
 
+def not_null(text):
+    """Returns True if text is not null."""
+    return text != ""
+
+
 def get_comment(prompt_text):
     """Prompts users for a number and returns a comment if valid."""
     comments = retrieve_comment(False)
@@ -51,6 +56,16 @@ def get_comment(prompt_text):
     except IndexError:
         print("Invalid selection.")
         return None
+
+
+def get_input(prompt_text, optional=False):
+    """Prompts users for a string and returns a string."""
+    validator = None if optional else Validator.from_callable(
+        not_null,
+        error_message='This input is empty',
+        move_cursor_to_end=True)
+
+    return prompt(prompt_text, validator=validator)
 
 
 def menu():
@@ -71,10 +86,9 @@ def menu():
 
 def create_comment():
     """Creates a comment."""
-    prompt_session = PromptSession()
-    title = prompt_session.prompt("Title: ")
-    body = prompt_session.prompt("Body: ")
-    name = prompt_session.prompt("Name: ")
+    title = get_input("Title: ")
+    body = get_input("Body: ")
+    name = get_input("Name: ", True)
     time = datetime.datetime.now()
 
     comment = Comments(title=title, body=body, name=name, datetime=time)
