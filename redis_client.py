@@ -10,7 +10,7 @@ from typing import Optional
 
 from cursesmenu import CursesMenu
 from cursesmenu.items import FunctionItem
-from prompt_toolkit import prompt, PromptSession, print_formatted_text, HTML
+from prompt_toolkit import prompt, print_formatted_text, HTML
 from prompt_toolkit.validation import Validator
 from redis_om import (
     Field,
