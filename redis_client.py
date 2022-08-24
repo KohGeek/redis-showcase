@@ -139,8 +139,8 @@ def delete_comment():
     comment = get_comment("Select a comment to delete: ")
 
     if comment is not None:
-        private_key = comment.pk
-        Comments.delete(private_key)
+        primary_key = comment.pk
+        Comments.delete(primary_key)
 
         print("Comment deleted.")
 
