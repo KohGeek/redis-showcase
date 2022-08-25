@@ -91,9 +91,12 @@ def create_comment():
     name = get_input("Name: ", True)
     time = datetime.datetime.now()
 
-    comment = Comments(title=title, body=body, name=name, datetime=time)
-    comment.save()
+    if not_null(name):
+        comment = Comments(title=title, body=body, name=name, datetime=time)
+    else:
+        comment = Comments(title=title, body=body, datetime=time)
 
+    comment.save()
     Migrator().run()
 
     print("Comment created.")
